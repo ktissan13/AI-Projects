@@ -24,8 +24,9 @@ with open("intents.json") as file:
 # print(data["intents"])
 
 try:
-    with open('data.pickle', 'rb') as f:
-        words, labels, training, output = pickle.load(f)
+    # with open('data.pickle', 'rb') as f:
+        #words, labels, training, output = pickle.load(f)
+    ti.py
 except:
     words = []
     labels = []
@@ -90,7 +91,8 @@ net = tflearn.regression(net)
 model = tflearn.DNN(net)
 
 try:
-    model.load('model.tflearn')
+    # model.load('model.tflearn')
+    ti.py
 except:
     model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
     model.save('model.tflearn')
@@ -116,15 +118,17 @@ def chat():
         if inp.lower() == 'quit':
             break
 
-        results = model.predict([bag_of_words(inp, words)])
+        results = model.predict([bag_of_words(inp, words)])[0]
         results_index = numpy.argmax(results)
         tag = labels[results_index]
 
-        for tg in data["intents"]:
-            if tg['tag'] == tag:
-                responses = tg['responses']
-
-        print(random.choice(responses))
+        if results[results_index] > 0.7:
+            for tg in data["intents"]:
+                if tg['tag'] == tag:
+                    responses = tg['responses']
+            print(random.choice(responses))
+        else:
+            print("I don't get that! :(")
 
 
 chat()
