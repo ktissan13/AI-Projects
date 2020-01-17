@@ -1,7 +1,7 @@
 {"intents": [
         {"tag": "greeting",
          "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up"],
-         "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"],
+         "responses": ["Hello, Tissan!", "Good to see you again!", "Hi there, How can I help?"],
          "context_set": ""
         },
         {"tag": "goodbye",
@@ -11,7 +11,7 @@
         },
         {"tag": "age",
          "patterns": ["how old", "how old is Tissan", "what is your age", "how old are you", "age?"],
-         "responses": ["I am 17 years old!", "17 years young!"],
+         "responses": ["Tissan is am 17 years old!"],
          "context_set": ""
         },
         {"tag": "name",
